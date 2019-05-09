@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Thomas Klein, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ *
+ * @package         Payment Method Availability Module
+ * @copyright       Copyright (c) Thomas Klein (https://thomas-kl1.github.io)
+ * @author          Thomas Klein
+ * @license         MIT
+ * @support         https://github.com/thomas-kl1/magento2-payment-method-availability/issues/new
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="default_payment_method_settings" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="0">
+                <label>Default Payment Method Settings</label>
+                <field id="availability_map" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10">
+                    <label>Payment Method Availability</label>
+                    <comment>The availability restriction to apply to the payment methods.</comment>
+                    <frontend_model>Tklein\PaymentMethodAvailability\Block\Adminhtml\Config\Form\Field\PaymentMethodAvailabilityMap</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <config_path>payment/default_payment_method_settings/availability_map</config_path>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

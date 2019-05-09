@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Thomas Klein, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ *
+ * @package         Payment Method Availability Module
+ * @copyright       Copyright (c) Thomas Klein (https://thomas-kl1.github.io)
+ * @author          Thomas Klein
+ * @license         MIT
+ * @support         https://github.com/thomas-kl1/magento2-payment-method-availability/issues/new
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tklein\PaymentMethodAvailability\Spi\MethodProcessorInterface" type="Tklein\PaymentMethodAvailability\Model\MethodProcessorComposite"/>
+    <type name="Tklein\PaymentMethodAvailability\Model\MethodProcessorComposite">
+        <arguments>
+            <argument name="methodProcessorPool" xsi:type="array">
+                <item name="default" xsi:type="array">
+                    <item name="minAmount" xsi:type="string">Tklein\PaymentMethodAvailability\Model\Method\MinAmountProcessor</item>
+                    <item name="maxAmount" xsi:type="string">Tklein\PaymentMethodAvailability\Model\Method\MaxAmountProcessor</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Payment\Model\MethodInterface">
+        <plugin name="Tklein_PaymentMethodAvailability_Plugin_Model_Method" type="Tklein\PaymentMethodAvailability\Plugin\Model\MethodPlugin" sortOrder="10" />
+    </type>
+</config>
